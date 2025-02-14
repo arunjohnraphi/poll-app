@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pollapp-deployment
+  labels:
+    app: pollapp
+    tire: frontend
+
+spec:
+  template:
+    metadata:
+      name: pollapp-pod
+      labels:
+        app: pollapp
+        type: frontend
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
+  replicas: 3
+  selector:
+    matchLabels:
+      type: frontend
