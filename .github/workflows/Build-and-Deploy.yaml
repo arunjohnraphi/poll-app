@@ -31,3 +31,10 @@ jobs:
       env:
         COMMIT_HASH: ${{ github.sha }}
 
+    # Step 5: Push the Docker image to Docker Hub.
+    - name: Push Docker image
+      run: |
+        IMAGE_TAG=arunjohnraphi/pollapp_project:${{ github.sha }}
+        docker push $IMAGE_TAG
+      env:
+        COMMIT_HASH: ${{ github.sha }}
