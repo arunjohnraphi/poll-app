@@ -22,3 +22,11 @@ jobs:
     - name: Log in to Docker Hub
       run: echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
 
+    # Step 4: Build the Docker image.
+    - name: Build Docker image
+      run: |
+        IMAGE_TAG=arunjohnraphi/pollapp_project:${{ github.sha }}
+        docker build -t $IMAGE_TAG ./app
+      env:
+        COMMIT_HASH: ${{ github.sha }}
+
