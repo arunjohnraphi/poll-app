@@ -27,6 +27,7 @@ jobs:
       run: |
         IMAGE_TAG=arunjohnraphi/pollapp_project:${{ github.sha }}
         docker build -f Deployment/Dockerfile -t $IMAGE_TAG .
+        docker images
       env:
         COMMIT_HASH: ${{ github.sha }}
 
