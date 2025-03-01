@@ -41,7 +41,7 @@ jobs:
 
     # Step 6: Deploy to EC2.
     - name: Deploy to EC2
-      uses: appleboy/ssh-action@v0.1.8
+      uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.EC2_HOST }}
         username: ${{ secrets.EC2_USER }}
