@@ -49,6 +49,10 @@ jobs:
         script: |
           # Pull the Docker image on the EC2 instance.
           IMAGE_TAG=arunjohnraphi/pollapp_project:${{ github.sha }}
+          
+          # Docker login
+          echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
+          
           sudo docker pull $IMAGE_TAG
           echo "image pulling completed"
           
