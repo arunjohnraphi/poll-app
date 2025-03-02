@@ -64,7 +64,7 @@ jobs:
           if [ "$(sudo docker ps -q -f name=github-action-docker-image)" ]; then
             sudo docker stop github-action-docker-image
             sudo docker rm github-action-docker-image
-            echo " removed existing docker images"
+            echo " removed existing docker containers"
           fi
 
           #Run the Docker container.
