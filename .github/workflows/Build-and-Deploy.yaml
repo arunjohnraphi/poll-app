@@ -51,6 +51,10 @@ jobs:
           IMAGE_TAG=arunjohnraphi/pollapp_project:${{ github.sha }}
           docker pull $IMAGE_TAG
           echo "image pulling completed"
+          
+          # List currently present Docker images
+          echo "Currently present Docker images:"
+          docker images
 
 #          # Stop and remove the existing container if it exists.
 #          if [ "$(docker ps -q -f name=github-action-docker-image)" ]; then
