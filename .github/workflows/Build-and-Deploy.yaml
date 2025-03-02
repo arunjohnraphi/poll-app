@@ -48,3 +48,16 @@ jobs:
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
           # Pull the Docker image on the EC2 instance.
+          IMAGE_TAG=arunjohnraphi/pollapp_project:${{ github.sha }}
+          docker pull $IMAGE_TAG
+
+          # Stop and remove the existing container if it exists.
+          if [ "$(docker ps -q -f name=github-action-docker-image)" ]; then
+            docker stop github-action-docker-image
+            docker rm github-action-docker-image
+          fi
+
+          # Run the Docker container.
+          docker run -d --name github-action-docker-image -p 8080:80 $IMAGE_TAG
+      env:
+        COMMIT_HASH: ${{ github.sha }}
