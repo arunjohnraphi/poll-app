@@ -60,13 +60,13 @@ jobs:
           echo "Currently present Docker images:"
           sudo docker images
 
-#          # Stop and remove the existing container if it exists.
-#          if [ "$(docker ps -q -f name=github-action-docker-image)" ]; then
-#            docker stop github-action-docker-image
-#            docker rm github-action-docker-image
-#          fi
+          # Stop and remove the existing container if it exists.
+          if [ "$(docker ps -q -f name=github-action-docker-image)" ]; then
+            docker stop github-action-docker-image
+            docker rm github-action-docker-image
+          fi
 
-          # Run the Docker container.
-#          docker run -d --name github-action-docker-image -p 80:8000 $IMAGE_TAG
+           Run the Docker container.
+          docker run -d --name github-action-docker-image -p 80:8000 $IMAGE_TAG
       env:
         COMMIT_HASH: ${{ github.sha }}
